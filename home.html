@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background-color: crimson;
+        }
+        .main{
+            margin: 40px;
+            font-family: cursive;
+            text-align: center;
+            color: floralwhite;
+        }
+        .box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            width: 20%;
+            height: 60%;
+            border-radius: 30px;
+            box-shadow: rgba(255, 255, 255, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            background-color: indigo;
+        }
+
+        #weather_con{
+            position: relative;
+            transform: translate(34%,60%);
+        }
+        .info{
+            position: relative;
+            transform: translate(0%,50%);
+        }
+        .location{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            color: floralwhite;
+        }
+        #date{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            color: rgb(197, 194, 188);
+        }
+        .temperature{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            color: rgb(255, 170, 0);
+        }
+        .temp_min_max{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            color:chocolate;
+        }
+        #street{
+            animation: rotates 1s linear infinite alternate;
+        }
+        @keyframes rotates {
+            from{
+                transform: translate(-0.2rem);
+            }
+            to{
+                transform: translate(0.2rem);
+            }
+        }
+        #sun{
+            animation: rotate 1s infinite  alternate;
+        }
+        @keyframes rotate {
+            from{
+                transform: translateY(1rem);
+            }
+            to{
+                transform: translateY(-0.2rem);
+            }
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-App</title>
+</head>
+<body>
+    <h1 class="main">WELCOME TO OUR WEATHER APPLICATION</h1>
+    <div class="box">
+        <div id="weather_con">
+            <i id="sun" class="fa-solid fa-sun fa-5x" style="color: gold;"></i>
+        </div>
+        <div class="info">
+            <h2 class="location">
+                <i id="street" class="fa-solid fa-street-view" style="color:plum;"></i> {%city%}, {%country%}
+            </h2>
+            <p id="date">WED | OCT 23 | 10:49 PM</p>
+            <h1 class="temperature">{%temp%}°C</h1>
+            <h3 class="temp_min_max">Min {%temp_min%}°C | Max {%temp_max%}°C</h3>
+        </div>
+    </div>
+    <script>
+        var date = new Date(); 
+        var monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE",
+        "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        var dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        strDateInfo = dayNames[date.getDay()]+" | "+monthNames[date.getMonth()]+" "+date.getDate()+" | "+ strTime;
+        var tempStatus = "{%status%}";
+
+        var dateInfo = document.getElementById("date").innerHTML = strDateInfo;
+        var weathercon = document.getElementById("sun");
+
+        if(tempStatus == "Sunny"){
+            weathercon.className = "fa-solid fa-sun fa-5x";
+        }
+        else if(tempStatus == "Clouds"){
+            weathercon.className = "fa-solid fa-cloud fa-5x" ;
+        }
+        else if(tempStatus == "Rainy"){
+            weathercon.className = "fa-solid fa-cloud-rain fa-5x";
+            weathercon.style.color = "white";
+        } 
+        else{
+            weathercon.className = "fa-solid fa-cloud fa-5x";
+            weathercon.style.color = "lightblue";
+        }
+    </script>
+</body>
+</html>

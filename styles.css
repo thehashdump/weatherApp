@@ -1,0 +1,72 @@
+body{
+    background-color: crimson;
+}
+.main{
+    margin: 40px;
+    font-family: cursive;
+    text-align: center;
+    color: floralwhite;
+}
+.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 20%;
+    height: 60%;
+    border-radius: 30px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: indigo;
+}
+
+#weather_con{
+    position: relative;
+    transform: translate(34%,60%);
+}
+.info{
+    position: relative;
+    transform: translate(0%,50%);
+}
+.location{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: floralwhite;
+}
+#date{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: rgb(197, 194, 188);
+}
+.temperature{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: rgb(255, 170, 0);
+}
+.temp_min_max{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color:chocolate;
+}
+#street{
+    animation: rotates 1s linear infinite alternate;
+}
+@keyframes rotates {
+    from{
+        transform: translate(-0.2rem);
+    }
+    to{
+        transform: translate(0.2rem);
+    }
+}
+#sun{
+    animation: rotate 1s infinite  alternate;
+}
+@keyframes rotate {
+    from{
+        transform: translateY(1rem);
+    }
+    to{
+        transform: translateY(-0.2rem);
+    }
+}
